@@ -1,17 +1,16 @@
-describe "my_collect" do
-  let(:languages) { ['ruby', 'javascript', 'python', 'objective-c'] }
-  let(:students) { ['Tim Jones', 'Tom Smith', 'Sophie Johnson', 'Antoin Miller'] }
+list = ["Tim Jones", "Bob Costas", "Don Knotts"]
 
-  it "can handle an empty collection" do
-    empty_array = []
-    counter = 0
-      my_collect(empty_array) do |x|
-        counter += 1
-      end
-    expect(counter).to eq(0)
+
+def my_collect(array)
+  i = 0
+  name_collection = []
+  while i < array.length
+    name_collection.push yield(array[i])
+  # you could also do it this way:
+  # name_collection << yield(array[i])
+    i += 1
   end
-
-collection = ['ruby', 'javascript', 'python', 'objective-c']
-my_collect(collection) do |lang|
-  lang.upcase
+  name_collection
 end
+
+my_collect(list) {|i| i.split(" ").first}
