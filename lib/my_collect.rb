@@ -11,3 +11,7 @@ describe "my_collect" do
     expect(counter).to eq(0)
   end
 
+collection = ['ruby', 'javascript', 'python', 'objective-c']
+my_collect(collection) do |lang|
+  lang.upcase
+end
